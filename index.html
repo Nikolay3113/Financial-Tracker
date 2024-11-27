@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="light">
+    <header class="app-header">
+        <h1>Financial Tracker</h1>
+        <button id="theme-toggle" class="theme-toggle">Сменить тему</button>
+    </header>
+
+    <main class="app-content">
+        <section class="balance-section">
+            <div class="balance-card">
+                <p>Общий баланс</p>
+                <p id="total-balance" class="balance-amount">0 руб.</p>
+            </div>
+            <div class="balance-card">
+                <p>Баланс за месяц</p>
+                <p id="monthly-balance" class="balance-amount">0 руб.</p>
+            </div>
+        </section>
+
+        <section class="form-section">
+            <form id="transaction-form" class="transaction-form">
+                <h2>Добавить транзакцию</h2>
+                <select id="transaction-type" required>
+                    <option value="income">Доход</option>
+                    <option value="expense">Расход</option>
+                </select>
+                <input type="number" id="transaction-amount" placeholder="Сумма" min="0" required>
+                <input type="text" id="transaction-category" placeholder="Категория" required>
+                <button type="submit">Добавить</button>
+            </form>
+        </section>
+
+        <section class="filter-section">
+            <h2>Фильтры</h2>
+            <select id="filter-year"></select>
+            <select id="filter-month"></select>
+            <select id="filter-type">
+                <option value="all">Все</option>
+                <option value="income">Доходы</option>
+                <option value="expense">Расходы</option>
+            </select>
+            <button id="filter-btn">Применить</button>
+        </section>
+
+        <section class="transactions-section">
+            <h2>Транзакции</h2>
+            <div class="transactions-scroll">
+                <ul id="transaction-list" class="transaction-list"></ul>
+            </div>
+        </section>
+
+        <section class="charts-section">
+            <h2>Графики доходов и расходов за текущий месяц</h2>
+            <div class="chart-container">
+                <canvas id="income-chart"></canvas>
+                <canvas id="expense-chart"></canvas>
+                <canvas id="monthly-finances-chart"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <button id="save-to-file-btn" class="save-btn">Сохранить данные</button>
+        <p id="notifications" class="notification"></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
